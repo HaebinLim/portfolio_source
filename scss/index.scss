@@ -1,0 +1,1007 @@
+/* reset */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+textarea,
+p,
+blockquote,
+th,
+td,
+input,
+select,
+textarea,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Cafe24Ssurround';
+}
+
+fieldset,
+img {
+  border: 0 none;
+}
+
+dl,
+ul,
+ol,
+menu,
+li {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+input,
+select,
+textarea,
+button {
+  vertical-align: middle;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  border: 0 none;
+  background-color: transparent;
+  cursor: pointer
+}
+
+body,
+th,
+td,
+input,
+select,
+textarea,
+button {
+  color: #222;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'NanumSquareRound';
+}
+
+a {
+  color: #00f;
+  text-decoration: none;
+}
+
+a:active,
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  background-color: transparent;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+img {
+  vertical-align: top;
+}
+
+@font-face {
+  font-family: 'NanumSquareRound';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cafe24Ssurround';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+$white: #fff;
+$lightGray: #f7f7f7;
+$gray: #999;
+$black: #000;
+$purple: #886ce4;
+
+$bgMain: #ffcbab;
+$bgCareer: #7abab9;
+
+$yellowHeart: "💛";
+$purpleHeart: "💜";
+$twoHearts: "💕";
+$developer: "👩‍💻";
+$goTop: "⬆️";
+$tool: "⚙️";
+
+@mixin txtOutLine($txtColor: $white, $lineColor: $black) {
+  color: $txtColor;
+  text-shadow: -1px -1px 0 $lineColor, 1px -1px 0 $lineColor, -1px 1px 0 $lineColor, 1px 1px 0 $lineColor;
+}
+
+@mixin borderRadius($radius: 6px) {
+  border-radius: $radius;
+  border-top-left-radius: 0;
+}
+
+@mixin srOnly {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+@mixin boxShadow($color: $black) {
+  box-shadow: 0 2px 30px 0 rgba($color, 0.1);
+}
+
+@mixin bullet($size: 4px, $color: $gray) {
+  display: flex;
+  gap: 0 $size*2;
+
+  &::before {
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: $size;
+    height: $size;
+    margin-top: $size + 4;
+    border-radius: 50%;
+    background: $color;
+    content: "";
+  }
+}
+
+@mixin flexColumn($gap: null) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+
+@mixin size($w: null, $h: null, $maxW: null, $maxH: null, $minW: null, $minH: null) {
+  width: $w;
+  height: $h;
+  min-width: $minW;
+  min-height: $minH;
+  max-width: $maxW;
+  max-height: $maxH;
+}
+
+@mixin position($pos: absolute, $top: null, $right: null, $bottom: null, $left: null, $zIdx: null) {
+  position: $pos;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $zIdx;
+}
+
+@mixin background($color: null, $url: null, $repeat: no-repeat, $x: null, $y: $x, $size: null) {
+  background-color: $color;
+  background-image: $url;
+  background-repeat: $repeat;
+  background-position: $x $y;
+  background-size: $size;
+}
+
+@mixin ellipsis($line: 1) {
+  @if ($line ==1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @else {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+  }
+}
+
+.sr_only {
+  @include srOnly;
+}
+
+
+body {
+  background: $lightGray;
+}
+
+a {
+  &.link_underline {
+    text-decoration: underline;
+  }
+
+  &:hover {
+    color: $purple;
+    font-weight: bold;
+  }
+}
+
+
+section {
+  overflow: hidden;
+  position: relative;
+  @include size($minW: 320px, $minH: 680px);
+
+  .inner {
+    @include flexColumn;
+    position: relative;
+    margin: 0 auto;
+    padding: 100px 60px;
+    box-sizing: border-box;
+    @include size($maxW: 1280px, $minH: 100vh);
+  }
+
+  .subtitle {
+    font-size: 42px;
+    font-weight: normal;
+    @include txtOutLine;
+
+    &:after {
+      content: $twoHearts;
+    }
+  }
+
+
+
+  .txt_bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 8px;
+
+    &>span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0 8px;
+      height: 20px;
+
+      &:not(:first-child):before {
+        display: inline-flex;
+        margin: auto 0;
+        @include size(1px, 10px);
+        background: $gray;
+        content: ""
+      }
+    }
+  }
+
+  .bullet {
+    @include bullet;
+  }
+
+  .tooltip {
+    position: absolute;
+    z-index: 10;
+    padding: 14px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: $white;
+
+    .btn_close {
+      @include position($top: 0, $right: 0);
+      @include size(30px, 30px);
+
+      &::before,
+      &::after {
+        $width: 2px;
+        $height: 18px;
+        @include position($top: calc(50% - $height/2), $left: calc(50% - $width/2));
+        @include size($width, $height);
+        background: rgba($black, .6);
+        content: "";
+      }
+
+      &:before {
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+
+    &:after {
+      $arrSize: 20px;
+      @include position($bottom: 0, $left: 50%);
+      margin-left: calc($arrSize/2 * -1);
+      margin-bottom: -$arrSize;
+      border: solid transparent;
+      border-width: $arrSize $arrSize 0 0;
+      border-top-color: $white;
+      content: "";
+    }
+  }
+}
+
+// 메인
+.main {
+  @include background($color: $bgMain, $url: url(../images/bg/bg_main_hello.png), $x: 50%, $size: auto);
+
+  .title {
+    display: flex;
+    font-size: 100px;
+
+    >span {
+      position: relative;
+      top: 10px;
+      animation: bounce .3s ease infinite alternate;
+      @include txtOutLine;
+
+      @for $i from 1 to 5 {
+        &:nth-child(#{$i+1}) {
+          animation-delay: ($i * 0.1s);
+        }
+      }
+    }
+  }
+
+  .greetings {
+    font-size: 24px;
+
+    strong {
+      display: inline-block;
+      padding: 0 3px;
+      color: $white;
+      background: $purple;
+    }
+  }
+
+  .menu {
+    @include flexColumn($gap: 10px 0);
+    margin: auto 0 0 auto;
+    align-items: flex-end;
+
+    nav {
+      @include flexColumn;
+    }
+
+    .btn_menu {
+      position: relative;
+      padding-right: 32px;
+      width: 100%;
+      font-family: 'Cafe24Ssurround';
+      font-size: 24px;
+      text-decoration: none;
+      word-spacing: 5px;
+      @include txtOutLine;
+
+      &::after {
+        display: flex;
+        align-items: center;
+        margin: auto 0;
+        @include position($top: 0, $right: 0, $bottom: 0);
+        font-size: 20px;
+        text-shadow: none;
+        content: $yellowHeart;
+      }
+
+      &.on,
+      &:hover {
+        @include txtOutLine($lineColor: $purple);
+
+        &::after {
+          content: $purpleHeart;
+        }
+      }
+
+      &.top {
+        display: none;
+        width: auto;
+      }
+    }
+
+    &.fixed {
+      @include position($pos: fixed, $top: 0, $right: 30px, $bottom: 0, $zIdx: 10);
+      height: 110px;
+      margin-bottom: auto;
+
+      .btn_menu.top {
+        display: block;
+
+        &:after {
+          content: $goTop;
+        }
+      }
+
+
+      .link_underline,
+      small {
+        @include srOnly();
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  100% {
+    top: -10px;
+  }
+}
+
+// 프로필
+.profile {
+  .inner {
+    gap: 30px 0;
+    justify-content: flex-end;
+    padding-bottom: 100px;
+  }
+
+  &::before,
+  &::after {
+    @include position($left: -25%, $right: -25%);
+    content: "";
+  }
+
+  &::before {
+    $h: 70vh;
+    top: -25%;
+    height: $h;
+    padding-top: $h - 10;
+    box-sizing: border-box;
+    font-size: 130px;
+    background: $bgMain;
+    text-align: center;
+    transform: rotate(5deg);
+    content: $developer;
+  }
+
+  &::after {
+    bottom: -25%;
+    height: 30vh;
+    background: $bgCareer;
+    transform: rotate(-2deg);
+  }
+
+  .personal {
+    @include flexColumn($gap: 4px 0);
+
+    .bullet {
+      strong {
+        word-spacing: 8px;
+        flex: 0 0 auto;
+      }
+    }
+
+  }
+}
+
+
+// 경력
+.career {
+  background: $bgCareer;
+
+  .wrap_title {
+    display: flex;
+  }
+
+  .btn_show {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-end;
+    justify-content: center;
+    margin-left: auto;
+    padding-left: 10px;
+    @include size(100px, 30px);
+    @include borderRadius;
+    font-weight: bold;
+    border: 1px solid currentColor;
+    color: $black;
+    font-size: 14px;
+
+    &:after {
+      display: inline-block;
+      margin: 3px 0 0 14px;
+      @include size(8px, 8px);
+      border: solid currentColor;
+      border-width: 2px 2px 0 0;
+      vertical-align: top;
+      transform: translate(-50%, -50%) rotate(135deg);
+      content: "";
+    }
+
+    &.on {
+      color: $white;
+
+      &:after {
+        transform: translate(-50%, 0) rotate(-45deg);
+      }
+    }
+
+    &:hover {
+      color: $white;
+
+    }
+  }
+
+  .history {
+    position: relative;
+    margin: 20px 0;
+    max-width: 1045px;
+    border-left: 2px solid rgba($white, .4);
+
+    .hide:not(.show .hide) {
+      display: none;
+    }
+
+    .tooltip {
+      top: 60px;
+      right: 60px;
+    }
+
+    &::before,
+    &::after {
+      @include position($top: 0, $bottom: 0, $zIdx: 0);
+      content: "";
+    }
+
+    &::before {
+      left: calc(45.45% - 2px);
+      border-left: 2px dashed rgba($white, .2);
+    }
+
+    &::after {
+      left: calc((45.45% * 2) - 2px);
+      border-left: 2px dashed rgba($white, .4);
+    }
+  }
+
+  .graph {
+    position: relative;
+    z-index: 1;
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  .row {
+    @include flexColumn;
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    font-weight: bold;
+    $leftValue: ("1": 0,
+      "2": 36.36%,
+      "3": 45.45%,
+      "4": 90.9%,
+      "5": 93%);
+
+    @each $number,
+    $value in $leftValue {
+      &:nth-of-type(#{$number}) {
+        left: $value;
+      }
+    }
+
+    &:not(.show)+.row {
+      margin-top: -30px;
+    }
+
+    .period {
+      padding: 0 8px;
+      @include size(240px, 30px);
+      box-sizing: border-box;
+      font-weight: bold;
+      line-height: 30px;
+    }
+
+    .company {
+      --colSize: 0;
+      --bgColor: $white;
+      display: flex;
+      align-items: center;
+      align-self: flex-start;
+      gap: 0 8px;
+      padding: 0 4px 0 6px;
+      @include size(calc(var(--colSize) / 11 * 100%), 40px);
+      @include borderRadius;
+      box-sizing: border-box;
+      background: var(--bgColor);
+      cursor: pointer;
+
+      .name {
+        @include ellipsis;
+      }
+
+      .team {
+        font-size: 12px;
+      }
+    }
+
+    .details {
+      align-self: flex-start;
+      padding: 6px 6px 20px;
+
+      li {
+        @include bullet($size: 3px, $color: rgba($black, .6));
+      }
+    }
+
+    &.show {
+      .period {
+        text-align: center;
+      }
+
+      .company {
+        padding: 0 20px;
+        width: auto;
+        border: 1px solid $black;
+
+        &::after {
+          @include position($top: 0, $bottom: 0, $left: 0);
+          width: 50%;
+          content: "";
+        }
+      }
+    }
+
+
+
+
+  }
+
+  .skills {
+    margin-top: auto;
+
+    strong {
+      padding: 10px 8px;
+      font-size: 24px;
+      letter-spacing: -1px;
+      @include txtOutLine;
+
+      &:after {
+        $size: 30px;
+        display: inline-block;
+        margin-left: 8px;
+        @include size($size, $size);
+        text-align: center;
+        font-size: 20px;
+        line-height: $size;
+        text-shadow: none;
+        transform-origin: center;
+        animation: rotate 4s linear infinite;
+        content: $tool;
+      }
+    }
+
+    .items {
+      margin-top: 4px;
+
+      >span {
+        display: inline-block;
+        margin: 2px;
+        padding: 1px 6px 0;
+        border: solid rgba($black, .7);
+        border-width: 0 2px 2px 0;
+        @include txtOutLine;
+        @include borderRadius;
+        font-weight: bold;
+        vertical-align: top;
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+
+// 프로젝트
+.project {
+  .list_project {
+    @include flexColumn;
+
+    .item {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      margin-top: 20px;
+      @include boxShadow;
+      @include borderRadius;
+      background: $white;
+
+      .thumb {
+        flex: 0 0 auto;
+        border: 1px solid rgba($black, 0.1);
+        @include size(100%, $maxW: 340px, $minH: 255px);
+        @include borderRadius;
+        @include background($x: 50%, $size: cover);
+      }
+
+      .cont {
+        @include flexColumn($gap: 6px 0);
+        flex: 1;
+        padding: 25px 30px 10px;
+        font-size: 14px;
+
+        .txt_bar {
+          color: $gray;
+        }
+
+        .txt_keyword {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+
+          >span {
+            padding: 1px 6px;
+            height: 22px;
+            border-radius: 2px;
+            box-sizing: border-box;
+            color: $white;
+            font-weight: bold;
+            background: $purple;
+
+          }
+        }
+
+        .tit_project {
+          font-size: 18px;
+        }
+
+        .txt_desc {
+          &>p {
+            @include bullet($size: 3px);
+          }
+        }
+
+      }
+
+      .links {
+        @include position($bottom: 20px, $right: 20px);
+
+        .link_url {
+          display: inline-flex;
+          position: relative;
+          @include size(60px, 60px);
+          border-radius: 50%;
+          background: $lightGray;
+
+          &::before {
+            display: flex;
+            margin: auto;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            content: "";
+          }
+
+          &.pc,
+          &.m,
+          &.rw {
+            &::before {
+              @include size(26px, 24px);
+              background-size: auto 26px;
+            }
+          }
+
+          &.rw::before {
+            background-image: url(../images/icon/ico_rw.png);
+          }
+
+          &.pc::before {
+            background-image: url(../images/icon/ico_pc.png);
+          }
+
+          &.m:before {
+            background-image: url(../images/icon/ico_mobile.png);
+          }
+
+          &::after {
+            @include position($bottom: -2px, $right: -2px);
+            @include size(16px, 16px);
+            @include background($url: url(../images/icon/ico_window.png), $x: 50%, $size: 16px);
+            border-radius: 50%;
+            opacity: .8;
+            content: "";
+          }
+
+          &.layer::after {
+            background-image: url(../images/icon/ico_layer.png);
+          }
+
+          &:hover {
+            background: $purple;
+
+            &::before {
+              filter: invert(100%);
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  .layer_link {
+    display: none;
+    padding: 20px;
+    min-width: 200px;
+    background: $white;
+    @include position($pos: fixed, $top: 0, $zIdx: 100);
+    @include boxShadow;
+
+    &.show {
+      @include flexColumn;
+    }
+
+    ul {
+      li {
+        @include bullet;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:1280px) {
+  .main {
+    .menu {
+      &.fixed {
+        right: 15px;
+
+        .btn_menu {
+          padding-right: 0;
+
+          &>span {
+            @include srOnly();
+          }
+
+          &::after {
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+
+  .career {
+    .history {
+      width: 660px;
+    }
+  }
+}
+
+
+@media only screen and (max-width:1024px) {
+  section {
+    min-height: 100vh;
+
+    .inner {
+      padding: 70px 30px;
+    }
+
+    .subtitle {
+      font-size: 36px;
+    }
+  }
+
+  .main {
+    .title {
+      font-size: 50px;
+      justify-content: center;
+    }
+
+    .greetings {
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .menu {
+      &.fixed {
+        margin-bottom: 30px;
+        right: 5px;
+
+        nav {
+          gap: 5px 0;
+        }
+
+        .btn_menu:after {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  .career {
+    .history {
+      width: 100%;
+      border-left: 0;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+
+      .row {
+        .company {
+          width: 100%;
+        }
+
+        &+.row {
+          left: 0;
+          margin-top: 20px;
+          padding-top: 10px;
+          border-top: 2px dashed rgba($white, 0.2);
+        }
+      }
+    }
+  }
+
+  .profile {
+    &::before {
+      content: "";
+    }
+  }
+
+  .project {
+    .list_project {
+      .item {
+        flex-direction: column;
+
+        .thumb {
+          @include size($maxW: 100%, $minH: 180px);
+        }
+
+        .cont {
+          padding: 18px 18px 80px;
+        }
+
+        .links {
+          left: 20px;
+          text-align: center;
+
+          .link_url {
+            @include size(50px, 50px)
+          }
+        }
+      }
+    }
+  }
+}

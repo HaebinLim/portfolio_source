@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>임해빈 포트폴리오</title>
+  <link href="scss/index.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <section class="main">
+    <div class="inner">
+      <h1 class="title">포트폴리오</h1>
+      <p class="greetings">안녕하세요:D <strong>UI개발자 임해빈</strong>입니다. <br />열람해주셔서 감사합니다!</p>
+      <div class="menu">
+        <nav>
+          <button type="button" class="btn_menu" data-section="profile" title="프로필"><span>프 로 필</span></button>
+          <button type="button" class="btn_menu" data-section="career" title="경력사항"><span>경력사항</span></button>
+          <button type="button" class="btn_menu" data-section="project" title="프로젝트"><span>프로젝트</span></button>
+        </nav>
+        <a href="https://github.com/HaebinLim" target="_blank" class="link_underline">Github</a>
+        <small>Last Updated 2022.11.15</small>
+        <button type="button" class="btn_menu top" data-section="main" title="TOP"><span>TOP</span></button>
+      </div>
+    </div>
+  </section>
+  <section class="profile">
+    <div class="inner">
+      <h2 class="subtitle">프로필</h2>
+      <div class="personal"></div>
+    </div>
+  </section>
+  <section class="career">
+    <div class="inner">
+      <div class="wrap_title">
+        <h2 class="subtitle">경력사항</h2>
+        <button type="button" class="btn_show">상세내용<span class="sr_only">펼치기/접기</span></button>
+      </div>
+      <div class="history">
+        <p class="tooltip">👆 기업명에 마우스오버 👆</p>
+        <div class="graph">
+        </div>
+      </div>
+      <div class="skills">
+        <strong>보유기술 &amp; 사용 툴</strong>
+      </div>
+    </div>
+  </section>
+  <section class="project">
+    <div class="inner">
+      <h2 class="subtitle">프로젝트</h2>
+      <div class="list_project"></div>
+    </div>
+  </section>
+  <script type="text/javascript" src="./js/data.js"></script>
+  <script type="module" src="./module/index.js"></script>
+</body>
+
+</html>
